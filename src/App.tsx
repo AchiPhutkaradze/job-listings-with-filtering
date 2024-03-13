@@ -7,7 +7,7 @@ function App() {
       <Header />
       <Cards />
     </>
-  );
+  );          
 }
 
 export default App;
