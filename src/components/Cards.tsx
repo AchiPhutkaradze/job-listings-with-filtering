@@ -1,26 +1,35 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import data from "../../data.json";
 interface Type {
   data?: any;
 }
-
+type LanguageButton = {
+  property: string;
+  value: string;
+};
 export default function Cards({ data: _ }: Type) {
-  const [skill, setSkill] = useState<string>("");
-  console.log(skill);
+  const [language, setLanguage] = useState<Array<{}> | LanguageButton[]>([]);
+  console.log(language);
 
-  const tools = data.map((item) => {
-    return item.role;
-  });
+  const choseLanguageHandler = (obj: LanguageButton) => {
+    setLanguage((state) => {
+      if (
+        !state.some(
+          (button: any) =>
+            button.property === obj.property && button.value === obj.value
+        )
+      ) {
+        return [...state, obj];
+      }
+      return state;
+    });
+  };
 
-  let arr: any = tools.flat();
-  useEffect(() => {
-    setSkill(arr);
-  }, []);
   return (
-    <div className="flex flex-col gap-5 mt-4">
-      {data.map((item: any) => (
+    <div className="flex flex-col gap-10 mt-20">
+      {data.map((item) => (
         <div className="p-4 shadow-xl border-black" key={item.id}>
-          <div className="relative bottom-5 left-7 ">
+          <div className="relative bottom-10 left-7 ">
             <img className="w-12" src={item.logo} alt="company logo" />
           </div>
           <div className="flex flex-col gap-2">
@@ -47,6 +56,42 @@ export default function Cards({ data: _ }: Type) {
               <div className="w-1 h-1 rounded-full bg-slate-800"></div>
               <p>{item.location}</p>
             </div>
+          </div>
+          <hr className="w-full h-1 mt-3 mb-3" />
+          <div className="flex gap-x-10	 flex-wrap">
+            <button
+              onClick={() => {
+                choseLanguageHandler({
+                  property: "role",
+                  value: item.role,
+                });
+              }}
+            >
+              {item.role}
+            </button>
+            <button
+              onClick={() =>
+                choseLanguageHandler({
+                  property: "level",
+                  value: item.level,
+                })
+              }
+            >
+              {item.level}
+            </button>
+            {item.languages.map((eachLanguage: string, index: number) => (
+              <button
+                onClick={() =>
+                  choseLanguageHandler({
+                    property: "language",
+                    value: eachLanguage,
+                  })
+                }
+                key={index}
+              >
+                {eachLanguage}
+              </button>
+            ))}
           </div>
         </div>
       ))}
