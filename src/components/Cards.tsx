@@ -1,16 +1,39 @@
-import { useState } from "react";
+import { useEffect } from "react";
 import data from "../../data.json";
 interface Type {
   data?: any;
+  setArrayLength: React.Dispatch<React.SetStateAction<boolean>>;
+  arrayLength: boolean;
+  language: Array<{}>;
+  setLanguage: React.Dispatch<React.SetStateAction<{}[] | string[]>>;
 }
 type LanguageButton = {
   property: string;
   value: string;
 };
-export default function Cards({ data: _ }: Type) {
-  const [language, setLanguage] = useState<Array<{}> | LanguageButton[]>([]);
+
+export default function Cards({
+  data: _,
+  setArrayLength,
+  language,
+  setLanguage,
+}: Type) {
   console.log(language);
 
+  useEffect(() => {
+    if (language.length > 0) {
+      setArrayLength(true);
+    }
+    for (let i = 0; i < language.length; i++) {
+      if (Object.keys(language[i]).includes("role")) {
+        console.log("aris roli obieqtshi");
+      } else {
+        console.log("ar aris obieqtshi");
+      }
+      console.log(Object.values(language[i])[0]);
+      console.log(language[i].value);
+    }
+  });
   const choseLanguageHandler = (obj: LanguageButton) => {
     setLanguage((state) => {
       if (
@@ -26,9 +49,12 @@ export default function Cards({ data: _ }: Type) {
   };
 
   return (
-    <div className="flex flex-col gap-10 mt-20">
+    <div className="flex flex-col gap-10 pt-20 bg-color items-center">
       {data.map((item) => (
-        <div className="p-4 shadow-xl border-black" key={item.id}>
+        <div
+          className="p-4 shadow-boxShadow bg-cardColor max-w-3xl w-full"
+          key={item.id}
+        >
           <div className="relative bottom-10 left-7 ">
             <img className="w-12" src={item.logo} alt="company logo" />
           </div>

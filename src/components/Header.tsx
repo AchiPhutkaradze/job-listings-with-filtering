@@ -1,9 +1,9 @@
 export default function Header() {
   return (
     <div>
-      <div className="bg-stone-400">
+      <div className="bg-stone-400 bg-headerBgColor">
         <img
-          className="h-auto max-w-full w-full"
+          className="h-auto z-10 relative w-full max-h-40"
           src="../public/assets/bg-header-mobile.svg"
           alt="bg-image"
         ></img>
@@ -11,4 +11,3 @@ export default function Header() {
     </div>
   );
 }
-  
