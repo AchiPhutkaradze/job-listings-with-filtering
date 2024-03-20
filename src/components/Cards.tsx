@@ -1,36 +1,77 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import data from "../../data.json";
 interface Type {
-  data?: any;
+  data?: object;
   setArrayLength: React.Dispatch<React.SetStateAction<boolean>>;
   arrayLength: boolean;
-  language: Array<{}>;
-  setLanguage: React.Dispatch<React.SetStateAction<{}[] | string[]>>;
+  buttons: Array<{}>;
+  setButtons: any;
+  buttonArr: [];
 }
-type LanguageButton = {
+
+interface DataTypes {
+  id: number;
+  company: string;
+  logo: string;
+  new: boolean;
+  featured: boolean;
+  position: string;
+  role: string;
+  level: string;
+  postedAt: string;
+  contract: string;
+  location: string;
+  languages: string[];
+  tools: string[];
+}
+interface LanguageButton {
   property: string;
   value: string;
-};
+}
 
 export default function Cards({
   data: _,
   setArrayLength,
-  language,
-  setLanguage,
+  buttons,
+  setButtons,
+  arrayLength,
+  buttonArr,
 }: Type) {
-  // console.log(language);
+  const [card, setCard] = useState<DataTypes[]>(data);
+  console.log(arrayLength);
 
   useEffect(() => {
-    if (language.length > 0) {
+    if (buttons.length > 0) {
       setArrayLength(true);
     }
   });
 
+  // second condition when arrayLength is true
+  useEffect(() => {
+    if (arrayLength !== true) {
+      return;
+    }
+
+    const filteredData = data.filter((item) => {
+      return buttonArr.every((value: string) => {
+        return (
+          value === item.role ||
+          value === item.level ||
+          item.languages.includes(value)
+        );
+      });
+    });
+    if (arrayLength) {
+      setCard(filteredData);
+    }
+  }, [buttonArr, data, arrayLength]);
+
+  //
   const choseLanguageHandler = (obj: LanguageButton) => {
-    setLanguage((state) => {
+    setButtons((state: any) => {
       if (
         !state.some(
-          (button: any) =>
+          (button: LanguageButton) =>
             button.property === obj.property && button.value === obj.value
         )
       ) {
@@ -42,7 +83,7 @@ export default function Cards({
 
   return (
     <div className="flex flex-col gap-10 pt-20 bg-color items-center">
-      {data.map((item) => (
+      {card.map((item) => (
         <div
           className="p-4 shadow-boxShadow bg-cardColor max-w-3xl w-full"
           key={item.id}
