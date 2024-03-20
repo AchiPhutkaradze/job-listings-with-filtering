@@ -10,7 +10,7 @@ function App() {
   return (
     <>
       <Header />
-      {arrayLength === true && <FilterBar />}
+      {arrayLength === true && <FilterBar  language={language} />}
       <Cards
         arrayLength={arrayLength}
         setArrayLength={setArrayLength}

@@ -18,22 +18,14 @@ export default function Cards({
   language,
   setLanguage,
 }: Type) {
-  console.log(language);
+  // console.log(language);
 
   useEffect(() => {
     if (language.length > 0) {
       setArrayLength(true);
     }
-    for (let i = 0; i < language.length; i++) {
-      if (Object.keys(language[i]).includes("role")) {
-        console.log("aris roli obieqtshi");
-      } else {
-        console.log("ar aris obieqtshi");
-      }
-      console.log(Object.values(language[i])[0]);
-      console.log(language[i].value);
-    }
   });
+
   const choseLanguageHandler = (obj: LanguageButton) => {
     setLanguage((state) => {
       if (
