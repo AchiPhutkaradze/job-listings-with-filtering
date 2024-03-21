@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import data from "../../data.json";
+import data from "../.././public/data.json";
 interface Type {
   data?: object;
   setArrayLength: React.Dispatch<React.SetStateAction<boolean>>;
