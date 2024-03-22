@@ -4,9 +4,8 @@ interface Type {
   data?: object;
   setArrayLength: React.Dispatch<React.SetStateAction<boolean>>;
   arrayLength: boolean;
-  buttons: Array<{}>;
   setButtons: any;
-  buttonArr: [];
+  buttonArr: [] | string[];
 }
 
 interface DataTypes {
@@ -32,7 +31,6 @@ interface LanguageButton {
 export default function Cards({
   data: _,
   setArrayLength,
-  buttons,
   setButtons,
   arrayLength,
   buttonArr,
@@ -41,8 +39,10 @@ export default function Cards({
   console.log(arrayLength);
 
   useEffect(() => {
-    if (buttons.length > 0) {
+    if (buttonArr.length > 0) {
       setArrayLength(true);
+    } else {
+      setArrayLength(false);
     }
   });
 
@@ -117,8 +117,9 @@ export default function Cards({
             </div>
           </div>
           <hr className="w-full h-1 mt-3 mb-3" />
-          <div className="flex gap-x-10	 flex-wrap">
+          <div className="flex gap-x-5	gap-y-5 flex-wrap">
             <button
+              className="font-bold bg-buttonBgColor text-base h-8 w-20 rounded text-slate-500"
               onClick={() => {
                 choseLanguageHandler({
                   property: "role",
@@ -129,6 +130,7 @@ export default function Cards({
               {item.role}
             </button>
             <button
+              className="font-bold bg-buttonBgColor tex-base h-8 w-20 rounded text-slate-500"
               onClick={() =>
                 choseLanguageHandler({
                   property: "level",
@@ -140,6 +142,7 @@ export default function Cards({
             </button>
             {item.languages.map((eachLanguage: string, index: number) => (
               <button
+                className="font-bold text-textColor bg-buttonBgColor h-8 w-20 rounded text-slate-500"
                 onClick={() =>
                   choseLanguageHandler({
                     property: "language",

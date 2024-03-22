@@ -6,7 +6,7 @@ import FilterBar from "./components/FilterBar";
 function App() {
   const [arrayLength, setArrayLength] = useState<boolean>(false);
   const [buttons, setButtons] = useState<Array<{ value: string }>>([]);
-  const [buttonArr, setButtonArr] = useState<any>([]);
+  const [buttonArr, setButtonArr] = useState<[] | string[]>([]);
   console.log(buttons);
   useEffect(() => {
     for (let i = 0; i < buttons.length; i++) {
@@ -20,13 +20,16 @@ function App() {
     <>
       <Header />
       {arrayLength === true && (
-        <FilterBar buttons={buttons} buttonArr={buttonArr} />
+        <FilterBar
+          buttons={buttons}
+          buttonArr={buttonArr}
+          setButtonArr={setButtonArr}
+        />
       )}
       <Cards
         buttonArr={buttonArr}
         arrayLength={arrayLength}
         setArrayLength={setArrayLength}
-        buttons={buttons}
         setButtons={setButtons}
       />
     </>

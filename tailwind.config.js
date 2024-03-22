@@ -10,6 +10,10 @@ export default {
         cardColor: "#fff",
         color: "#effafa",
         headerBgColor: "#5ca5a5",
+        buttonBgColor: "#5ca5a51a",
+      },
+      color: {
+        textColor: "#5ca5a5",
       },
     },
   },
