@@ -82,41 +82,43 @@ export default function Cards({
   };
 
   return (
-    <div className="flex flex-col gap-10 pt-20 bg-color items-center">
+    <div className="flex flex-col gap-10 pt-20 pl-5 pr-5 bg-color items-center h-lvh">
       {card.map((item) => (
         <div
-          className="p-4 shadow-boxShadow bg-cardColor max-w-3xl w-full"
+          className="pt-8 pr-6 pl-6 pb-8 relative shadow-boxShadow bg-cardColor max-w-3xl w-full"
           key={item.id}
         >
-          <div className="relative bottom-10 left-7 ">
+          <div className="absolute -top-7 left-20">
             <img className="w-12" src={item.logo} alt="company logo" />
           </div>
           <div className="flex flex-col gap-2">
             <div className="flex gap-8">
-              <p className="w-29">{item.company}</p>
+              <p className="w-29 text-textColor font-bold text-sm	">
+                {item.company}
+              </p>
               <div className="flex gap-2">
                 {item.new === true && (
-                  <button className="rounded-xl w-12 text-white bg-teal-800	">
+                  <button className="rounded-xl w-12 text-white bg-headerBgColor text-sm font-bold">
                     New
                   </button>
                 )}
                 {item.featured === true && (
-                  <button className="rounded-xl w-20	 text-white bg-teal-950	">
+                  <button className="rounded-xl w-20 font-bold text-xs text-white bg-teal-950	">
                     FEATURED
                   </button>
                 )}
               </div>
             </div>
-            <div>{item.position}</div>
+            <div className="text-nameColor font-bold">{item.position}</div>
             <div className="flex gap-2.5 items-center">
-              <p>{item.postedAt}</p>
-              <div className="w-1 h-1 rounded-full bg-slate-800"></div>
-              <p>{item.contract}</p>
-              <div className="w-1 h-1 rounded-full bg-slate-800"></div>
-              <p>{item.location}</p>
+              <p className="text-lightColor">{item.postedAt}</p>
+              <div className="w-1 h-1 rounded-full bg-lightColor"></div>
+              <p className="text-lightColor">{item.contract}</p>
+              <div className="w-1 h-1 rounded-full bg-lightColor"></div>
+              <p className="text-lightColor">{item.location}</p>
             </div>
           </div>
-          <hr className="w-full h-1 mt-3 mb-3" />
+          <hr className="w-full h-height mt-3 mb-3 bg-lineColor" />
           <div className="flex gap-x-5	gap-y-5 flex-wrap">
             <button
               className="font-bold bg-buttonBgColor text-base h-8 w-20 rounded text-slate-500"
