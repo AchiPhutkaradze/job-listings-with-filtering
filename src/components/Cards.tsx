@@ -5,7 +5,9 @@ interface Type {
   setArrayLength: React.Dispatch<React.SetStateAction<boolean>>;
   arrayLength: boolean;
   setButtons: any;
-  buttonArr: [] | string[];
+  buttons: {
+    value: string;
+  }[];
 }
 
 interface DataTypes {
@@ -33,13 +35,13 @@ export default function Cards({
   setArrayLength,
   setButtons,
   arrayLength,
-  buttonArr,
+  buttons,
 }: Type) {
   const [card, setCard] = useState<DataTypes[]>(data);
   console.log(arrayLength);
 
   useEffect(() => {
-    if (buttonArr.length > 0) {
+    if (buttons.length > 0) {
       setArrayLength(true);
     } else {
       setArrayLength(false);
@@ -48,23 +50,21 @@ export default function Cards({
 
   // second condition when arrayLength is true
   useEffect(() => {
-    if (arrayLength !== true) {
+    if (!arrayLength) {
       return;
     }
 
     const filteredData = data.filter((item) => {
-      return buttonArr.every((value: string) => {
+      return buttons.every((button) => {
         return (
-          value === item.role ||
-          value === item.level ||
-          item.languages.includes(value)
+          button.value.includes(item.role) ||
+          button.value.includes(item.level) ||
+          item.languages.includes(button.value)
         );
       });
     });
-    if (arrayLength) {
-      setCard(filteredData);
-    }
-  }, [buttonArr, data, arrayLength]);
+    setCard(filteredData);
+  }, [data, arrayLength, buttons]);
 
   //
   const choseLanguageHandler = (obj: LanguageButton) => {
@@ -121,7 +121,7 @@ export default function Cards({
           <hr className="w-full h-height mt-3 mb-3 bg-lineColor" />
           <div className="flex gap-x-5	gap-y-5 flex-wrap">
             <button
-              className="font-bold bg-buttonBgColor text-base h-8 w-20 rounded text-slate-500"
+              className="font-bold bg-buttonBgColor text-base h-8 w-20 rounded text-textColor"
               onClick={() => {
                 choseLanguageHandler({
                   property: "role",
@@ -132,7 +132,7 @@ export default function Cards({
               {item.role}
             </button>
             <button
-              className="font-bold bg-buttonBgColor tex-base h-8 w-20 rounded text-slate-500"
+              className="font-bold bg-buttonBgColor tex-base h-8 w-20 rounded text-textColor "
               onClick={() =>
                 choseLanguageHandler({
                   property: "level",
@@ -144,7 +144,7 @@ export default function Cards({
             </button>
             {item.languages.map((eachLanguage: string, index: number) => (
               <button
-                className="font-bold text-textColor bg-buttonBgColor h-8 w-20 rounded text-slate-500"
+                className="font-bold text-textColor bg-buttonBgColor h-8 w-20 rounded "
                 onClick={() =>
                   choseLanguageHandler({
                     property: "language",
