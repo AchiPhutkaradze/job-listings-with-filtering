@@ -48,18 +48,18 @@ export default function Cards({
     }
   });
 
-  // second condition when arrayLength is true
   useEffect(() => {
     if (!arrayLength) {
       return;
     }
-
+    //card filtering
     const filteredData = data.filter((item) => {
       return buttons.every((button) => {
         return (
           button.value.includes(item.role) ||
           button.value.includes(item.level) ||
-          item.languages.includes(button.value)
+          item.languages.includes(button.value) ||
+          item.tools.includes(button.value)
         );
       });
     });
@@ -124,7 +124,7 @@ export default function Cards({
               </div>
             </div>
             <hr className="w-full h-height mt-3 mb-3 bg-lineColor xl:hidden" />
-            <div className="flex gap-x-5	gap-y-5 flex-wrap  xl:gap-0  xl:gap-x-4 xl:items-center">
+            <div className="flex gap-x-5	gap-y-5 flex-wrap  xl:gap-0  xl:gap-x-4 xl:items-center xl:w-width">
               <button
                 className="font-bold bg-buttonBgColor text-base h-8 w-20 rounded text-textColor"
                 onClick={() => {
@@ -159,6 +159,20 @@ export default function Cards({
                   key={index}
                 >
                   {eachLanguage}
+                </button>
+              ))}
+              {item.tools.map((eachTool: string, index: number) => (
+                <button
+                  className="font-bold text-textColor bg-buttonBgColor h-8 w-20 rounded "
+                  onClick={() =>
+                    choseLanguageHandler({
+                      property: "tool",
+                      value: eachTool,
+                    })
+                  }
+                  key={index}
+                >
+                  {eachTool}
                 </button>
               ))}
             </div>
