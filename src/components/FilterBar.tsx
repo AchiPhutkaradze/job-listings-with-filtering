@@ -18,10 +18,12 @@ export default function FilterBar(props: {
     newButtons.splice(index, 1);
     props.setButtons(newButtons);
   }
-
+  const clear = () => {
+    props.setButtons([]);
+  };
   return (
     <div className="pl-5 pr-5 w-full  -mt-10 z-20 relative  ">
-      <div className="w-full flex p-5 rounded-md bg-cardColor	shadow-boxShadow m-auto max-w-3xl gap-5 flex-wrap xl:max-w-maxWidth">
+      <div className="w-full flex p-5 rounded-md bg-cardColor	shadow-boxShadow m-auto max-w-3xl gap-5 flex-wrap xl:max-w-maxWidth relative">
         {props.buttons.map((element: string | any, index: number) => (
           <button
             key={index}
@@ -38,6 +40,9 @@ export default function FilterBar(props: {
             </button>
           </button>
         ))}
+        <button className="absolute right-5 text-textColor" onClick={clear}>
+          Clear
+        </button>
       </div>
     </div>
   );
