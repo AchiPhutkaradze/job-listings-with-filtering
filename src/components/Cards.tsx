@@ -98,7 +98,7 @@ export default function Cards({
           <div className=" xl:flex xl:justify-between xl:pl-6 xl:w-full">
             <div className="flex flex-col gap-2 ">
               <div className="flex gap-8">
-                <p className="w-29 text-textColor font-bold text-sm	">
+                <p className="w-29 text-textColor font-bold text-sm xl:text-base">
                   {item.company}
                 </p>
                 <div className="flex gap-2">
@@ -114,7 +114,9 @@ export default function Cards({
                   )}
                 </div>
               </div>
-              <div className="text-nameColor font-bold">{item.position}</div>
+              <div className="text-nameColor font-bold xl:text-xl">
+                {item.position}
+              </div>
               <div className="flex gap-2.5 items-center">
                 <p className="text-lightColor">{item.postedAt}</p>
                 <div className="w-1 h-1 rounded-full bg-lightColor"></div>
