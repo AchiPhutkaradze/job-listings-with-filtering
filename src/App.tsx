@@ -12,7 +12,7 @@ function App() {
       {arrayLength === true && (
         <FilterBar buttons={buttons} setButtons={setButtons} />
       )}
-      <Cards
+      <Cards  
         arrayLength={arrayLength}
         setArrayLength={setArrayLength}
         setButtons={setButtons}

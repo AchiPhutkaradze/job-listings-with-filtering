@@ -85,77 +85,83 @@ export default function Cards({
     <div className="flex flex-col gap-10 pt-20 pl-5 pr-5 bg-color items-center h-lvh">
       {card.map((item) => (
         <div
-          className="pt-8 pr-6 pl-6 pb-8 relative shadow-boxShadow bg-cardColor max-w-3xl w-full"
+          className="pt-8 pr-6 pl-6 pb-8 relative shadow-boxShadow bg-cardColor max-w-3xl w-full xl:flex xl:max-w-maxWidth"
           key={item.id}
         >
-          <div className="absolute -top-7 left-20">
-            <img className="w-12" src={item.logo} alt="company logo" />
+          <div className="absolute -top-7 left-20 xl:relative xl:top-0 xl:left-0 flex xl:items-center xl:w-22">
+            <img
+              className="w-12 xl:w-full"
+              src={item.logo}
+              alt="company logo"
+            />
           </div>
-          <div className="flex flex-col gap-2">
-            <div className="flex gap-8">
-              <p className="w-29 text-textColor font-bold text-sm	">
-                {item.company}
-              </p>
-              <div className="flex gap-2">
-                {item.new === true && (
-                  <button className="rounded-xl w-12 text-white bg-headerBgColor text-sm font-bold">
-                    New
-                  </button>
-                )}
-                {item.featured === true && (
-                  <button className="rounded-xl w-20 font-bold text-xs text-white bg-teal-950	">
-                    FEATURED
-                  </button>
-                )}
+          <div className=" xl:flex xl:justify-between xl:pl-6 xl:w-full">
+            <div className="flex flex-col gap-2 ">
+              <div className="flex gap-8">
+                <p className="w-29 text-textColor font-bold text-sm	">
+                  {item.company}
+                </p>
+                <div className="flex gap-2">
+                  {item.new === true && (
+                    <button className="rounded-xl w-12 text-white bg-headerBgColor text-sm font-bold">
+                      New
+                    </button>
+                  )}
+                  {item.featured === true && (
+                    <button className="rounded-xl w-20 font-bold text-xs text-white bg-teal-950	">
+                      FEATURED
+                    </button>
+                  )}
+                </div>
+              </div>
+              <div className="text-nameColor font-bold">{item.position}</div>
+              <div className="flex gap-2.5 items-center">
+                <p className="text-lightColor">{item.postedAt}</p>
+                <div className="w-1 h-1 rounded-full bg-lightColor"></div>
+                <p className="text-lightColor">{item.contract}</p>
+                <div className="w-1 h-1 rounded-full bg-lightColor"></div>
+                <p className="text-lightColor">{item.location}</p>
               </div>
             </div>
-            <div className="text-nameColor font-bold">{item.position}</div>
-            <div className="flex gap-2.5 items-center">
-              <p className="text-lightColor">{item.postedAt}</p>
-              <div className="w-1 h-1 rounded-full bg-lightColor"></div>
-              <p className="text-lightColor">{item.contract}</p>
-              <div className="w-1 h-1 rounded-full bg-lightColor"></div>
-              <p className="text-lightColor">{item.location}</p>
-            </div>
-          </div>
-          <hr className="w-full h-height mt-3 mb-3 bg-lineColor" />
-          <div className="flex gap-x-5	gap-y-5 flex-wrap">
-            <button
-              className="font-bold bg-buttonBgColor text-base h-8 w-20 rounded text-textColor"
-              onClick={() => {
-                choseLanguageHandler({
-                  property: "role",
-                  value: item.role,
-                });
-              }}
-            >
-              {item.role}
-            </button>
-            <button
-              className="font-bold bg-buttonBgColor tex-base h-8 w-20 rounded text-textColor "
-              onClick={() =>
-                choseLanguageHandler({
-                  property: "level",
-                  value: item.level,
-                })
-              }
-            >
-              {item.level}
-            </button>
-            {item.languages.map((eachLanguage: string, index: number) => (
+            <hr className="w-full h-height mt-3 mb-3 bg-lineColor xl:hidden" />
+            <div className="flex gap-x-5	gap-y-5 flex-wrap  xl:gap-0  xl:gap-x-4 xl:items-center">
               <button
-                className="font-bold text-textColor bg-buttonBgColor h-8 w-20 rounded "
+                className="font-bold bg-buttonBgColor text-base h-8 w-20 rounded text-textColor"
+                onClick={() => {
+                  choseLanguageHandler({
+                    property: "role",
+                    value: item.role,
+                  });
+                }}
+              >
+                {item.role}
+              </button>
+              <button
+                className="font-bold bg-buttonBgColor tex-base h-8 w-20 rounded text-textColor "
                 onClick={() =>
                   choseLanguageHandler({
-                    property: "language",
-                    value: eachLanguage,
+                    property: "level",
+                    value: item.level,
                   })
                 }
-                key={index}
               >
-                {eachLanguage}
+                {item.level}
               </button>
-            ))}
+              {item.languages.map((eachLanguage: string, index: number) => (
+                <button
+                  className="font-bold text-textColor bg-buttonBgColor h-8 w-20 rounded "
+                  onClick={() =>
+                    choseLanguageHandler({
+                      property: "language",
+                      value: eachLanguage,
+                    })
+                  }
+                  key={index}
+                >
+                  {eachLanguage}
+                </button>
+              ))}
+            </div>
           </div>
         </div>
       ))}

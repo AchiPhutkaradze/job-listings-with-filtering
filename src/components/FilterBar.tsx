@@ -20,8 +20,8 @@ export default function FilterBar(props: {
   }
 
   return (
-    <div className="pl-5 pr-5 w-full  -mt-10 z-20 relative ">
-      <div className="w-full flex p-5 rounded-md bg-cardColor	shadow-boxShadow m-auto max-w-3xl gap-5 flex-wrap">
+    <div className="pl-5 pr-5 w-full  -mt-10 z-20 relative  ">
+      <div className="w-full flex p-5 rounded-md bg-cardColor	shadow-boxShadow m-auto max-w-3xl gap-5 flex-wrap xl:max-w-maxWidth">
         {props.buttons.map((element: string | any, index: number) => (
           <button
             key={index}

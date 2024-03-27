@@ -22,6 +22,9 @@ export default {
       height: {
         height: "1px",
       },
+      maxWidth: {
+        maxWidth: "1110px",
+      },
     },
   },
   plugins: [],
