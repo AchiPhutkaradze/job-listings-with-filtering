@@ -1,30 +1,55 @@
-# React + TypeScript + Vite
+# Job Listing with Filtering
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Roadmap
 
-Currently, two official plugins are available:
+- [Overview](#overview)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+  - [The challenge](#the-challenge)
+  - [Screenshot](#screenshots)
+  - [Links](#links)
 
-## Expanding the ESLint configuration
+- [My process](#my-process)
+  - [Built with](#built-with)
+  - [What I learned](#what-i-learned)
+- [Author](#author)
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Overview
 
-- Configure the top-level `parserOptions` property like this:
+### The challenge 
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+## Users Can
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+The Job Listing with Filtering project helps people find jobs that match what they're looking for. It's like a tool that makes job hunting easier. Users can pick what kind of job they want, like what level it is, or what programming languages they want to work with
+
+
+
+### Screenshots
+
+![App Screenshot](./public/design/job-list.webp)  
+
+
+### Links
+
+- Solution URL: [GitHub Code](https://github.com/AchiPhutkaradze/job-listings-with-filtering)
+- Live Site URL: [Live](https://job-listings-with-filtering-fawn.vercel.app)
+
+## My process
+
+### Built with
+
+- React.js with TypeScript
+- Tailwind CSS
+- Mobile-first workflow
+
+
+### What I learned
+
+While working on this project, I got better at understanding how to work with lists of information (like jobs) and how to make it easier for people to find what they want. I also learned  Tailwind CSS. It's a way to make websites look nice, and it was my first time using it.
+
+
+
+## author
+
+- Linkedin - [Tamazi Phutkaradze](https://www.linkedin.com/in/tamazi-phutkaradze-a629b7265/)
+
+
