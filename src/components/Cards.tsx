@@ -82,7 +82,7 @@ export default function Cards({
   };
 
   return (
-    <div className="flex flex-col gap-10 pt-20 pl-5 pr-5 bg-color items-center h-lvh">
+    <div className="flex flex-col gap-10 pt-20 pl-5 pr-5 items-center pb-36">
       {card.map((item) => (
         <div
           className="pt-8 pr-6 pl-6 pb-8 relative shadow-boxShadow bg-cardColor max-w-3xl w-full xl:flex xl:max-w-maxWidth"
