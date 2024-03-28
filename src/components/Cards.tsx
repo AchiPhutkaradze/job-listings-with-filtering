@@ -1,34 +1,8 @@
 import { useEffect, useState } from "react";
 import data from "../.././public/data.json";
-interface Type {
-  data?: object;
-  setArrayLength: React.Dispatch<React.SetStateAction<boolean>>;
-  arrayLength: boolean;
-  setButtons: any;
-  buttons: {
-    value: string;
-  }[];
-}
-
-interface DataTypes {
-  id: number;
-  company: string;
-  logo: string;
-  new: boolean;
-  featured: boolean;
-  position: string;
-  role: string;
-  level: string;
-  postedAt: string;
-  contract: string;
-  location: string;
-  languages: string[];
-  tools: string[];
-}
-interface LanguageButton {
-  property: string;
-  value: string;
-}
+import { DataTypes } from "./Types";
+import { Type } from "./Types";
+import { ButtonTypes } from "./Types";
 
 export default function Cards({
   data: _,
@@ -38,7 +12,6 @@ export default function Cards({
   buttons,
 }: Type) {
   const [card, setCard] = useState<DataTypes[]>(data);
-  console.log(arrayLength);
 
   useEffect(() => {
     if (buttons.length > 0) {
@@ -67,11 +40,11 @@ export default function Cards({
   }, [data, arrayLength, buttons]);
 
   //
-  const choseLanguageHandler = (obj: LanguageButton) => {
+  const choseLanguageHandler = (obj: ButtonTypes) => {
     setButtons((state: any) => {
       if (
         !state.some(
-          (button: LanguageButton) =>
+          (button: ButtonTypes) =>
             button.property === obj.property && button.value === obj.value
         )
       ) {
