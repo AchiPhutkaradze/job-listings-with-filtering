@@ -128,7 +128,7 @@ export default function Cards({
             <hr className="w-full h-height mt-3 mb-3 bg-lineColor xl:hidden" />
             <div className="flex gap-x-5	gap-y-5 flex-wrap  xl:gap-0  xl:gap-x-4 xl:items-center xl:w-width">
               <button
-                className="font-bold bg-buttonBgColor text-base h-8 w-20 rounded text-textColor"
+                className="font-bold bg-buttonBgColor text-base h-8 w-20 rounded text-textColor xl:hover:bg-headerBgColor xl:hover:text-white"
                 onClick={() => {
                   choseLanguageHandler({
                     property: "role",
@@ -139,7 +139,7 @@ export default function Cards({
                 {item.role}
               </button>
               <button
-                className="font-bold bg-buttonBgColor tex-base h-8 w-20 rounded text-textColor "
+                className="font-bold bg-buttonBgColor tex-base h-8 w-20 rounded text-textColor xl:hover:bg-headerBgColor xl:hover:text-white"
                 onClick={() =>
                   choseLanguageHandler({
                     property: "level",
@@ -151,7 +151,7 @@ export default function Cards({
               </button>
               {item.languages.map((eachLanguage: string, index: number) => (
                 <button
-                  className="font-bold text-textColor bg-buttonBgColor h-8 w-20 rounded "
+                  className="font-bold text-textColor bg-buttonBgColor h-8 w-20 rounded xl:hover:bg-headerBgColor xl:hover:text-white"
                   onClick={() =>
                     choseLanguageHandler({
                       property: "language",
@@ -165,7 +165,7 @@ export default function Cards({
               ))}
               {item.tools.map((eachTool: string, index: number) => (
                 <button
-                  className="font-bold text-textColor bg-buttonBgColor h-8 w-20 rounded "
+                  className="font-bold text-textColor bg-buttonBgColor h-8 w-20 rounded xl:hover:bg-headerBgColor xl:hover:text-white"
                   onClick={() =>
                     choseLanguageHandler({
                       property: "tool",
